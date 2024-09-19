@@ -1,8 +1,10 @@
 package com.example.eisenhowermatrix_taskmanager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -38,25 +40,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.eisenhowermatrix_taskmanager.navigation.SetupNavGraph
 import com.example.eisenhowermatrix_taskmanager.ui.theme.EisenhowerMatrixTaskManagerTheme
+import com.example.eisenhowermatrix_taskmanager.viewmodel.TaskViewModel
 
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val taskViewModel = ViewModelProvider(this)[TaskViewModel:: class.java]
         enableEdgeToEdge()
         setContent {
             EisenhowerMatrixTaskManagerTheme {
                 // Cria e lembra o controlador de navegação que gerencia a troca de telas.
                 val navController = rememberNavController()
-
+                //TaskListScreen(taskViewModel)
                 // Configura o grafo de navegação, passando o navController para definir as rotas das telas.
-                SetupNavGraph(navController = navController)
+                SetupNavGraph(navController = navController, viewModel = taskViewModel)
             }
         }
     }

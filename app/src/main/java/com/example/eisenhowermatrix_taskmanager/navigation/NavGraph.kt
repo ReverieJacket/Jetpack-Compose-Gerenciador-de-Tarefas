@@ -8,11 +8,12 @@ import androidx.navigation.compose.composable
 import com.example.eisenhowermatrix_taskmanager.ui.addtask.AddTaskScreen
 import com.example.eisenhowermatrix_taskmanager.ui.components.ColoredScreen
 import com.example.eisenhowermatrix_taskmanager.ui.dashboard.DashboardScreen
+import com.example.eisenhowermatrix_taskmanager.viewmodel.TaskViewModel
 
 // Função composable que configura o grafo de navegação do app.
 // Define as rotas para as diferentes telas que podem ser acessadas via o navController.
 @Composable
-fun SetupNavGraph(navController: NavHostController) {
+fun SetupNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
     // Define o NavHost, onde o navController controla a navegação entre as telas.
     NavHost(
         navController = navController,
@@ -41,7 +42,7 @@ fun SetupNavGraph(navController: NavHostController) {
         }
         // Rota para a tela de adicionar tarefa
         composable("add_task") {
-            AddTaskScreen(navController)
+            AddTaskScreen(navController, viewModel)
         }
     }
 }
