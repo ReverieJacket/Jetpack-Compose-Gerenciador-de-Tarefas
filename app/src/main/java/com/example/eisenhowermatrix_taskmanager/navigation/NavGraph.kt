@@ -42,7 +42,7 @@ fun SetupNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
         }
         // Rota para a tela de adicionar tarefa
         composable("add_task") {
-            AddTaskScreen(navController, viewModel)
+            AddTaskScreen(viewModel)
         }
     }
 }
