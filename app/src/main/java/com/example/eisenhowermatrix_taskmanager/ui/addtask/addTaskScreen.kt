@@ -34,7 +34,7 @@ import com.example.eisenhowermatrix_taskmanager.viewmodel.TaskViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddTaskScreen(navController: NavHostController, viewModel: TaskViewModel) {
+fun AddTaskScreen(viewModel: TaskViewModel) {
     val taskList by viewModel.taskList.observeAsState()
     var inputText by remember { mutableStateOf("") }
     var inputText1 by remember { mutableStateOf("") }
