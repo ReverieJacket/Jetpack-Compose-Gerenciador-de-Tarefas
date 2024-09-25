@@ -1,5 +1,6 @@
 package com.example.eisenhowermatrix_taskmanager.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,10 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-
+import androidx.navigation.NavController
 
 @Composable
-fun DashboardHeader() {
+fun DashboardHeader(navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
@@ -36,7 +37,7 @@ fun DashboardHeader() {
 
         // Ícones
         Row(
-            horizontalArrangement = Arrangement.spacedBy(16.dp) // Espaçamento entre os ícones
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Icon(
                 imageVector = Icons.Default.Settings,
@@ -46,7 +47,11 @@ fun DashboardHeader() {
             Icon(
                 imageVector = Icons.Default.Info,
                 contentDescription = "Info",
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier
+                    .size(24.dp)
+                    .clickable {
+                        navController.navigate("info_screen") // Navega para a tela "info_screen"
+                    }
             )
         }
     }

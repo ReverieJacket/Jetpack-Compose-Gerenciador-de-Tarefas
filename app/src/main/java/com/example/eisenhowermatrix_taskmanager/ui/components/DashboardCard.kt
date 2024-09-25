@@ -25,7 +25,7 @@ fun DashboardCard(
     backgroundColor: Color,
     title: String,
     subtitle: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     // Define um cartão com largura total e altura fixa, que reage a cliques.
     Card(

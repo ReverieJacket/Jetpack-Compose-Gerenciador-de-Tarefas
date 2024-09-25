@@ -59,10 +59,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             EisenhowerMatrixTaskManagerTheme {
                 // Cria e lembra o controlador de navegação que gerencia a troca de telas.
-                //val navController = rememberNavController()
-                TaskListScreen(taskViewModel)
+                val navController = rememberNavController()
+                //TaskListScreen(taskViewModel)// isso ta atrapalhando as outras telas, mas sem ele não adiciona novas tarefas
                 // Configura o grafo de navegação, passando o navController para definir as rotas das telas.
-                //SetupNavGraph(navController = navController, viewModel = taskViewModel)
+                SetupNavGraph(navController = navController, viewModel = taskViewModel)
             }
         }
     }

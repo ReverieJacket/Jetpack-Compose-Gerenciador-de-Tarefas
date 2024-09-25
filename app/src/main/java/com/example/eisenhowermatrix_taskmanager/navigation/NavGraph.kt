@@ -5,8 +5,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.eisenhowermatrix_taskmanager.TaskListScreen
 import com.example.eisenhowermatrix_taskmanager.ui.addtask.AddTaskScreen
 import com.example.eisenhowermatrix_taskmanager.ui.components.ColoredScreen
+import com.example.eisenhowermatrix_taskmanager.ui.components.InfoScreen
 import com.example.eisenhowermatrix_taskmanager.ui.dashboard.DashboardScreen
 import com.example.eisenhowermatrix_taskmanager.viewmodel.TaskViewModel
 
@@ -22,6 +24,9 @@ fun SetupNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
         // Rota para a tela "dashboard".
         composable("dashboard") {
             DashboardScreen(navController)
+        }
+        composable("task_list_screen") {
+            TaskListScreen(viewModel = viewModel)
         }
         // Rota para a tela verde.
         composable("green_screen") {
@@ -39,6 +44,9 @@ fun SetupNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
         // Rota para a tela vermelha.
         composable("red_screen") {
             ColoredScreen(color = Color(0xFFFF6E5B), title = "Elimine!")
+        }
+        composable(route = "info_screen") {
+            InfoScreen() // Substitua pela função da sua nova tela
         }
         // Rota para a tela de adicionar tarefa
         composable("add_task") {
