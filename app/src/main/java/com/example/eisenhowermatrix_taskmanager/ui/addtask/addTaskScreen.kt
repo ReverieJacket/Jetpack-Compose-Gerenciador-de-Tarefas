@@ -1,5 +1,6 @@
 package com.example.eisenhowermatrix_taskmanager.ui.addtask
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -38,6 +39,10 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
     var expanded by remember { mutableStateOf(false) }
     var selectedCategory by remember { mutableStateOf("Selecionar Categoria") }
 
+    var titleError by remember { mutableStateOf(false) }
+    var descriptionError by remember { mutableStateOf(false) }
+    var categoryError by remember { mutableStateOf(false) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -54,18 +59,34 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
 
         TextField(
             value = inputText,
-            onValueChange = { inputText = it },
+            onValueChange = {
+                inputText = it
+                titleError = false
+            },
             label = { Text("Título") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(
+                    width = 2.dp,
+                    color = if (titleError) Color.Red else Color.Transparent
+                )
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         TextField(
             value = inputText1,
-            onValueChange = { inputText1 = it },
+            onValueChange = {
+                inputText1 = it
+                descriptionError = false
+            },
             label = { Text("Descrição") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(
+                    width = 2.dp,
+                    color = if (descriptionError) Color.Red else Color.Transparent
+                )
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -82,6 +103,10 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                 modifier = Modifier
                     .fillMaxWidth()
+                    .border(
+                        width = 2.dp,
+                        color = if (categoryError) Color.Red else Color.Transparent
+                    )
                     .menuAnchor(MenuAnchorType.PrimaryEditable, true)
             )
             ExposedDropdownMenu(
@@ -91,18 +116,22 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
                 DropdownMenuItem(text = { Text("Urgente e importante") }, onClick = {
                     selectedCategory = "Urgente e importante"
                     expanded = false
+                    categoryError = false
                 })
                 DropdownMenuItem(text = { Text("Importante, não urgente") }, onClick = {
                     selectedCategory = "Importante, não urgente"
                     expanded = false
+                    categoryError = false
                 })
                 DropdownMenuItem(text = { Text("Urgente, não importante") }, onClick = {
                     selectedCategory = "Urgente, não importante"
                     expanded = false
+                    categoryError = false
                 })
                 DropdownMenuItem(text = { Text("Tanto faz") }, onClick = {
                     selectedCategory = "Tanto faz"
                     expanded = false
+                    categoryError = false
                 })
             }
         }
@@ -111,7 +140,11 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
 
         Button(
             onClick = {
-                if(selectedCategory != "Selecionar Categoria"){
+                titleError = inputText.isEmpty()
+                descriptionError = inputText1.isEmpty()
+                categoryError = selectedCategory == "Selecionar Categoria"
+
+                if (!titleError && !descriptionError && !categoryError) {
                     viewModel.addTask(inputText, inputText1, selectedCategory)
                     inputText = ""
                     inputText1 = ""
