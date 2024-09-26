@@ -13,6 +13,7 @@ class TaskViewModel: ViewModel() {
     fun getAllTasks(){
         _taskList.value = TaskManager.getAllTasks().reversed()
     }
+
     fun addTask(title : String, description : String){
         TaskManager.addTask(title, description)
         getAllTasks()

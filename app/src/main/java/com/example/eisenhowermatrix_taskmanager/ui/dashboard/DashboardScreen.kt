@@ -33,7 +33,7 @@ fun DashboardScreen(navController: NavHostController) {
             .windowInsetsPadding(WindowInsets.systemBars),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        DashboardHeader()
+        DashboardHeader(navController = navController)
 
         DashboardCard(
             backgroundColor = Color(0xFF64D37E),
