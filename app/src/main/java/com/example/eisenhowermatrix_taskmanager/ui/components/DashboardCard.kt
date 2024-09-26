@@ -60,7 +60,7 @@ fun DashboardCard(
                 text = subtitle,
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.White,
-                fontWeight = FontWeight.Light
+                fontWeight = FontWeight.Medium
             )
         }
     }
