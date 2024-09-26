@@ -60,8 +60,8 @@ fun InfoScreen() {
         )
 
         DashboardCard(
-            backgroundColor = Color.DarkGray,
-            title = "Paulo Sergio",
+            backgroundColor = Color.Red,
+            title = "Paulo Sérgio",
             subtitle = "Mais detalhes sobre o funcionamento do app.",
             onClick = { /* Ação opcional, pode deixar vazio */ }
         )
