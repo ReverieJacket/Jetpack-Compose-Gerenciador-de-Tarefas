@@ -18,9 +18,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 @Composable
-fun InfoScreen() {
+fun InfoScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -63,7 +64,7 @@ fun InfoScreen() {
             backgroundColor = Color.Red,
             title = "Paulo Sérgio",
             subtitle = "Mais detalhes sobre o funcionamento do app.",
-            onClick = { /* Ação opcional, pode deixar vazio */ }
+            onClick = { navController.navigate("paulo_screen") }
         )
     }
 }

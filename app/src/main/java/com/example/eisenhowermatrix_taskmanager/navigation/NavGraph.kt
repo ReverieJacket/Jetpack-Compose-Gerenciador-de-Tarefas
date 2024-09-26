@@ -46,7 +46,10 @@ fun SetupNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
             ColoredScreen(color = Color(0xFFFF6E5B), title = "Elimine!")
         }
         composable(route = "info_screen") {
-            InfoScreen() // Substitua pela função da sua nova tela
+            InfoScreen(navController) // Substitua pela função da sua nova tela
+        }
+        composable("paulo_screen") {
+            ColoredScreen(color = Color(0xFFFF6E5B), title = "Paulo!")
         }
         // Rota para a tela de adicionar tarefa
         composable("add_task") {
