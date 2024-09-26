@@ -42,7 +42,7 @@ fun TaskListScreen(viewModel: TaskViewModel){
         taskList?.let {
             LazyColumn(
                 content = {
-                    itemsIndexed(it){ index: Int, item: Task ->
+                    itemsIndexed(it){ _: Int, item: Task ->
                         TaskItem(item, onDelete = {
                             viewModel.deleteTask(item.id)
                         })
