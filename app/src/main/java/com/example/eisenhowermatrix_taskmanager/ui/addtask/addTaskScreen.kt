@@ -36,6 +36,7 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
     var inputText by remember { mutableStateOf("") }
     var inputText1 by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
+    var selectedCategory by remember { mutableStateOf("Selecionar Categoria") }
 
     Column(
         modifier = Modifier
@@ -69,8 +70,6 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        var selectedCategory by remember { mutableStateOf("Selecionar Categoria") }
-
         ExposedDropdownMenuBox(
             expanded = expanded,
             onExpandedChange = { expanded = !expanded },
@@ -79,7 +78,7 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
                 readOnly = true,
                 value = selectedCategory,
                 onValueChange = {},
-                label = { Text("Categoria") }, // Add a label for consistency
+                label = { Text("Categoria") },
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -90,19 +89,19 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
                 onDismissRequest = { expanded = false }
             ) {
                 DropdownMenuItem(text = { Text("Urgente e importante") }, onClick = {
-                    selectedCategory = "Category 1"
+                    selectedCategory = "Urgente e importante"
                     expanded = false
                 })
                 DropdownMenuItem(text = { Text("Importante, não urgente") }, onClick = {
-                    selectedCategory = "Category 2"
+                    selectedCategory = "Importante, não urgente"
                     expanded = false
                 })
                 DropdownMenuItem(text = { Text("Urgente, não importante") }, onClick = {
-                    selectedCategory = "Category 3"
+                    selectedCategory = "Urgente, não importante"
                     expanded = false
                 })
                 DropdownMenuItem(text = { Text("Tanto faz") }, onClick = {
-                    selectedCategory = "Category 4"
+                    selectedCategory = "Tanto faz"
                     expanded = false
                 })
             }
@@ -112,9 +111,12 @@ fun AddTaskScreen(viewModel: TaskViewModel) {
 
         Button(
             onClick = {
-                viewModel.addTask(inputText, inputText1)
-                inputText = ""
-                inputText1 = ""
+                if(selectedCategory != "Selecionar Categoria"){
+                    viewModel.addTask(inputText, inputText1, selectedCategory)
+                    inputText = ""
+                    inputText1 = ""
+                    selectedCategory = "Selecionar Categoria"
+                }
             },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
