@@ -13,17 +13,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.eisenhowermatrix_taskmanager.TaskListScreen
+import com.example.eisenhowermatrix_taskmanager.viewmodel.TaskViewModel
 
 // Função composable que cria telas coloridas com um texto centralizado.
 @Composable
-fun ColoredScreen(color: Color, title: String) {
+fun ColoredScreen(color: Color, title: String, taskViewModel: TaskViewModel) {
 
     Column(
-        modifier = Modifier
+        Modifier
             .fillMaxSize()
             .background(color)
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center
+            .padding(16.dp), Arrangement.Center
     ) {
         Text(
             text = title,
@@ -33,4 +34,5 @@ fun ColoredScreen(color: Color, title: String) {
             modifier = Modifier.fillMaxWidth()
         )
     }
+    TaskListScreen(taskViewModel)
 }
