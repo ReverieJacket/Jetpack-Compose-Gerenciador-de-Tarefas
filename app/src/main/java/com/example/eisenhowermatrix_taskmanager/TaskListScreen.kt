@@ -60,7 +60,7 @@ fun TaskItem(item: Task, onDelete : ()->Unit){
            .fillMaxWidth()
            .padding(8.dp)
            .clip(RoundedCornerShape(16.dp))
-           .background(Color(0xFF5C06D0))
+           .background(Color.DarkGray)
            .padding(16.dp)
 
 
@@ -69,7 +69,7 @@ fun TaskItem(item: Task, onDelete : ()->Unit){
             modifier = Modifier.weight(1f) // coloca o icône deletar no canto
         ){
             Text(text = item.title,
-                color = Color.White,
+                color = Color.LightGray,
                 fontSize = 20.sp
             )
             Text(text = item.description,
@@ -81,7 +81,7 @@ fun TaskItem(item: Task, onDelete : ()->Unit){
             Icon(
                 imageVector = Icons.Default.Delete,
                 contentDescription = "Deletar",
-                tint = Color.White
+                tint = Color.LightGray
             )
         }
     }

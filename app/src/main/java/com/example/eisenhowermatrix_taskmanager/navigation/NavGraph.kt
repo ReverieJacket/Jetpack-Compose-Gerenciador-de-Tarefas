@@ -2,12 +2,16 @@ package com.example.eisenhowermatrix_taskmanager.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.eisenhowermatrix_taskmanager.R
 import com.example.eisenhowermatrix_taskmanager.TaskListScreen
+import com.example.eisenhowermatrix_taskmanager.ui.about.AntonioProfile
 import com.example.eisenhowermatrix_taskmanager.ui.about.MarcusProfile
 import com.example.eisenhowermatrix_taskmanager.ui.about.MateusProfile
+import com.example.eisenhowermatrix_taskmanager.ui.about.PauloProfile
 import com.example.eisenhowermatrix_taskmanager.ui.addtask.AddTaskScreen
 import com.example.eisenhowermatrix_taskmanager.ui.components.ColoredScreen
 import com.example.eisenhowermatrix_taskmanager.ui.components.InfoScreen
@@ -51,13 +55,23 @@ fun SetupNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
             InfoScreen(navController) // Substitua pela função da sua nova tela
         }
         composable("paulo_screen") {
-            ColoredScreen(color = Color(0xFFFF6E5B), title = "Paulo!", viewModel)
+            PauloProfile(
+                stringResource(R.string.nome),
+                stringResource(R.string.profissao),
+                stringResource(R.string.actualProfissao),
+                stringResource(R.string.email),
+                stringResource(R.string.github),
+                stringResource(R.string.telefone)
+            )
         }
         composable("marcus_screen") {
             MarcusProfile()
         }
         composable("mateus_screen") {
             MateusProfile()
+        }
+        composable("antonio_screen") {
+            AntonioProfile()
         }
         // Rota para a tela de adicionar tarefa
         composable("add_task") {

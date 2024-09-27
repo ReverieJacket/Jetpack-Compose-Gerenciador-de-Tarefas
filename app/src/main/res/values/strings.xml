@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">EisenhowerMatrix-TaskManager</string>
+    <string name="nome">Paulo Sérgio</string>
+    <string name="profissao">Developer Extraordinaire</string>
+    <string name="actualProfissao">Professional Retard</string>
+    <string name="email">paulosergiolobogoes@gmail.com</string>
+    <string name="github">https://github.com/Paulo-Goes</string>
+    <string name="telefone">+XX X XXXX-XXXX</string>
 </resources>
