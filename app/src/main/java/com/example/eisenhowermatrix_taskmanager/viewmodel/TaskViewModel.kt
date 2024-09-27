@@ -6,22 +6,21 @@ import androidx.lifecycle.ViewModel
 import com.example.eisenhowermatrix_taskmanager.Task
 import com.example.eisenhowermatrix_taskmanager.TaskManager
 
-class TaskViewModel: ViewModel() {
+class TaskViewModel : ViewModel() {
     private var _taskList = MutableLiveData<List<Task>>()
-    val taskList : LiveData<List<Task>> = _taskList
+    val taskList: LiveData<List<Task>> = _taskList
 
-    fun getAllTasks(){
+    private fun getAllTasks() {
         _taskList.value = TaskManager.getAllTasks().reversed()
     }
 
-    fun addTask(title : String, description : String, category : String){
+    fun addTask(title: String, description: String, category: String) {
         TaskManager.addTask(title, description)
         getAllTasks()
     }
 
-    fun deleteTask(id : Int){
+    fun deleteTask(id: Int) {
         TaskManager.deleteTask(id)
         getAllTasks()
     }
-
 }
