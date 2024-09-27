@@ -47,7 +47,7 @@ fun InfoScreen(navController: NavHostController) {
             backgroundColor = Color.DarkGray,
             title = "Antonio Henrique",
             subtitle = "Descreva funcionalidades ou informações úteis.",
-            onClick = { /* Ação opcional, pode deixar vazio */ }
+            onClick = { navController.navigate("antonio_screen") }
         )
 
         DashboardCard(

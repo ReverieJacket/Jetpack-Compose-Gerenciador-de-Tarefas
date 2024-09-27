@@ -26,7 +26,7 @@ fun MateusProfile(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.perfil),
+            painter = painterResource(id = R.drawable.mateus),
             contentDescription = "Foto de perfil",
             modifier = Modifier
                 .size(350.dp)
