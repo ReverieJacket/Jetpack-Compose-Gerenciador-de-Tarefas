@@ -19,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -29,20 +30,29 @@ import androidx.compose.ui.unit.sp
 import com.example.eisenhowermatrix_taskmanager.viewmodel.TaskViewModel
 
 @Composable
-fun TaskListScreen(viewModel: TaskViewModel){
+fun TaskListScreen(viewModel: TaskViewModel, selectedCategory: TaskCategory? = null) {
     val taskList by viewModel.taskList.observeAsState()
 
-    Column (
+    // Se houver uma categoria selecionada, aplique o filtro
+    LaunchedEffect(selectedCategory) {
+        if (selectedCategory != null) {
+            viewModel.filterTasksByCategory(selectedCategory)
+        } else {
+            viewModel.getAllTasks()
+        }
+    }
+
+    Column(
         modifier = Modifier
             .fillMaxHeight()
             .padding(8.dp)
             .windowInsetsPadding(WindowInsets.systemBars),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
-    ){
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
         taskList?.let {
             LazyColumn(
                 content = {
-                    itemsIndexed(it){ _: Int, item: Task ->
+                    itemsIndexed(it) { _: Int, item: Task ->
                         TaskItem(item, onDelete = {
                             viewModel.deleteTask(item.id)
                         })
@@ -54,26 +64,31 @@ fun TaskListScreen(viewModel: TaskViewModel){
 }
 
 @Composable
-fun TaskItem(item: Task, onDelete : ()->Unit){
+fun TaskItem(item: Task, onDelete: () -> Unit) {
     Row(
-       modifier = Modifier
-           .fillMaxWidth()
-           .padding(8.dp)
-           .clip(RoundedCornerShape(16.dp))
-           .background(Color.DarkGray)
-           .padding(16.dp)
-
-
-    ){
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(Color(0xFFFFFFFF))
+            .padding(16.dp)
+    ) {
         Column(
-            modifier = Modifier.weight(1f) // coloca o icône deletar no canto
-        ){
-            Text(text = item.title,
-                color = Color.LightGray,
+            modifier = Modifier.weight(1f) // Coloca o ícone de deletar no canto
+        ) {
+            Text(
+                text = item.title,
+                color = Color.Black,
                 fontSize = 20.sp
             )
-            Text(text = item.description,
-                color = Color.LightGray,
+            Text(
+                text = item.description,
+                color = Color.Gray,
+                fontSize = 12.sp
+            )
+            Text( // Adiciona a exibição da categoria
+                text = item.category.name,
+                color = Color.Blue,
                 fontSize = 12.sp
             )
         }
@@ -81,7 +96,7 @@ fun TaskItem(item: Task, onDelete : ()->Unit){
             Icon(
                 imageVector = Icons.Default.Delete,
                 contentDescription = "Deletar",
-                tint = Color.LightGray
+                tint = Color.Black
             )
         }
     }

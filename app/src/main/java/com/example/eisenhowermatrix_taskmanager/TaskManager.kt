@@ -7,13 +7,18 @@ object TaskManager {
         return taskList
     }
 
-    fun addTask(title: String, description: String) {
-        taskList.add(Task(System.currentTimeMillis().toInt(), title, description))
+    fun addTask(title: String, description: String, category: String) {
+        taskList.add(Task(System.currentTimeMillis().toInt(), title, description, TaskCategory.valueOf(category)))
     }
 
     fun deleteTask(id: Int) {
-        taskList.removeIf {
-            it.id == id
-        }
+        taskList.removeIf { it.id == id }
     }
+}
+
+enum class TaskCategory(val value: String){
+    URGENT_IMPORTANT("Urgente e importante"),
+    IMPORTANT_NOT_URGENT("Importante, não urgente"),
+    URGENT_NOT_IMPORTANT("Urgente, não importante"),
+    NOT_URGENT_NOT_IMPORTANT("Tanto faz")
 }
