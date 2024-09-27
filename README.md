@@ -7,7 +7,7 @@ Checkmark para sinalizar que a anotação foi concluida
 Um counter para cada categoria mostrando quantas anotações existem nelas
 
 # IMPORTANTE
-Devido a problemas técnicos, Antônio não conseguiu desenvolver o applicativo em seu computador, e por isso não irá aparecer na lista de commits. Ele realizou as seguintes atividades no projeto:
+Devido a problemas técnicos, Antonio não conseguiu desenvolver o applicativo em seu computador, e por isso não irá aparecer na lista de commits. Ele realizou as seguintes atividades no projeto:
 
 - Auxiliou na criação da tela sobre e o botão para navegar para a tela
   - app/src/main/java/com/example/eisenhowermatrix_taskmanager/ui/components/InfoScreen.kt
