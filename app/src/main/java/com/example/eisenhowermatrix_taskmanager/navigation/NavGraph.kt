@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.eisenhowermatrix_taskmanager.TaskListScreen
 import com.example.eisenhowermatrix_taskmanager.ui.about.MarcusProfile
+import com.example.eisenhowermatrix_taskmanager.ui.about.MateusProfile
 import com.example.eisenhowermatrix_taskmanager.ui.addtask.AddTaskScreen
 import com.example.eisenhowermatrix_taskmanager.ui.components.ColoredScreen
 import com.example.eisenhowermatrix_taskmanager.ui.components.InfoScreen
@@ -54,6 +55,9 @@ fun SetupNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
         }
         composable("marcus_screen") {
             MarcusProfile()
+        }
+        composable("mateus_screen") {
+            MateusProfile()
         }
         // Rota para a tela de adicionar tarefa
         composable("add_task") {
