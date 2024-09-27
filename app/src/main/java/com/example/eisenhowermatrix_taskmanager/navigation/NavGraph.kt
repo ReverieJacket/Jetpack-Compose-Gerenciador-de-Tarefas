@@ -36,20 +36,20 @@ fun SetupNavGraph(navController: NavHostController, viewModel: TaskViewModel) {
         }
         // Rota para a tela verde.
         composable("green_screen") {
-            ColoredScreen(color = Color(0xFF64D37E), title = "Faça agora!", viewModel)
+            ColoredScreen(color = Color(0xFF64D37E), viewModel)
         }
         // Rota para a tela azul.
         composable("blue_screen") {
-            ColoredScreen(color = Color(0xFF4F96F1), title = "Decida quando fazer!", viewModel)
+            ColoredScreen(color = Color(0xFF4F96F1), viewModel)
         }
         // Rota para a tela amarela.
         composable("yellow_screen") {
             // Chama uma tela colorida com fundo amarelo e título "Delegue".
-            ColoredScreen(color = Color(0xFFFFAA38), title = "Delegue", viewModel)
+            ColoredScreen(color = Color(0xFFFFAA38), viewModel)
         }
         // Rota para a tela vermelha.
         composable("red_screen") {
-            ColoredScreen(color = Color(0xFFFF6E5B), title = "Elimine!", viewModel)
+            ColoredScreen(color = Color(0xFFFF6E5B), viewModel)
         }
         composable(route = "info_screen") {
             InfoScreen(navController) // Substitua pela função da sua nova tela

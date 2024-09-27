@@ -18,7 +18,7 @@ import com.example.eisenhowermatrix_taskmanager.viewmodel.TaskViewModel
 
 // Função composable que cria telas coloridas com um texto centralizado.
 @Composable
-fun ColoredScreen(color: Color, title: String, taskViewModel: TaskViewModel) {
+fun ColoredScreen(color: Color, taskViewModel: TaskViewModel) {
 
     Column(
         Modifier
@@ -26,13 +26,6 @@ fun ColoredScreen(color: Color, title: String, taskViewModel: TaskViewModel) {
             .background(color)
             .padding(16.dp), Arrangement.Center
     ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.headlineMedium,
-            color = Color.White,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
-        )
     }
     TaskListScreen(taskViewModel)
 }
